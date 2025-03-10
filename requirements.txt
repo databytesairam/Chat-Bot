@@ -14,3 +14,4 @@ wordcloud
 transformers
 pandas
 numpy
+joblib
