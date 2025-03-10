@@ -12,7 +12,6 @@ from sklearn.cluster import KMeans
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
-import wikipedia
 import requests
 from bs4 import BeautifulSoup
 import textwrap
@@ -156,20 +155,8 @@ def chunk_documents(raw_documents):
 def index_documents(document_chunks):
     DOCUMENT_VECTOR_DB.add_documents(document_chunks)
 
-def find_related_documents(query):
-    results = DOCUMENT_VECTOR_DB.similarity_search(query)
-    if not results:
-        return wikipedia_search(query)
-    return results
 
-def wikipedia_search(query):
-    try:
-        summary = wikipedia.summary(query, sentences=3)
-        return [summary]
-    except wikipedia.exceptions.DisambiguationError as e:
-        return [f"Multiple results found: {', '.join(e.options[:5])}"]
-    except wikipedia.exceptions.PageError:
-        return ["No relevant information found."]
+
 
 def web_search(query):
     search_url = f"https://www.google.com/search?q={query}"
