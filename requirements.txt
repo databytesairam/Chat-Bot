@@ -1,0 +1,16 @@
+streamlit
+langchain
+langchain_community
+langchain_core
+langchain_ollama
+pdfplumber
+networkx
+matplotlib
+scikit-learn
+wikipedia-api
+beautifulsoup4
+requests
+wordcloud
+transformers
+pandas
+numpy
